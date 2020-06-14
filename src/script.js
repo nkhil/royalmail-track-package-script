@@ -44,9 +44,9 @@ async function scheduledJob() {
 }
 
 // TODO: WIP - below runs every 10 seconds
-const x = schedule.scheduleJob('*/10 * * * * *', async function() {
+const job = schedule.scheduleJob('*/10 * * * * *', async function() {
   console.log('The answer to life, the universe, and everything!');
   await scheduledJob();
 });
 
-x.invoke();
+job.invoke();

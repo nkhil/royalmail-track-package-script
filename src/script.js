@@ -3,7 +3,7 @@ const schedule = require('node-schedule');
 
 const screenshot = 'royalmail.png';
 
-(async () => {
+async function scheduledJob() {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   console.log('new page created');
@@ -41,4 +41,12 @@ const screenshot = 'royalmail.png';
     console.log(`See screenshot: ${screenshot}`);
   }
   browser.close();
-})();
+}
+
+// TODO: WIP - below runs every 10 seconds
+const x = schedule.scheduleJob('*/10 * * * * *', async function() {
+  console.log('The answer to life, the universe, and everything!');
+  await scheduledJob();
+});
+
+x.invoke();
